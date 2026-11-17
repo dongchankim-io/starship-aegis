@@ -1,0 +1,460 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# ==============================================================================
+# 🛰️ STARSHIP-AEGIS — Multi-Server & Polyglot Telemetry Cockpit for Starship
+# Author:  Dongchan Kim (@dongchankim-io)
+# Repo:    https://github.com/dongchankim-io/starship-aegis
+# License: MIT
+#
+# Switch palette anytime:
+#   "catppuccin_mocha" | "tokyo_night" | "kanagawa" | "rose_pine" | "gruvbox_material" | "nord"
+# ==============================================================================
+palette = "catppuccin_mocha"
+
+command_timeout = 1000
+scan_timeout = 30
+add_newline = true
+
+# Seamless box alignment when typing multi-line commands (\, loops, heredocs)
+continuation_prompt = "[├─▸ ](fg:muted)"
+
+# Left prompt: Rounded Micro-Badge Identity + High-Signal Typography
+format = """
+[╭─ ](fg:muted)\
+[](fg:surface)\
+$os\
+$username\
+[@](fg:muted bg:surface)\
+$hostname\
+$localip\
+[](fg:surface) \
+${custom.prod_alert}\
+$env_var\
+$shlvl\
+$container\
+$nix_shell\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$git_metrics\
+$python\
+$nodejs\
+$bun\
+$deno\
+$rust\
+$golang\
+$java\
+$c\
+$zig\
+$package\
+$docker_context\
+$kubernetes\
+$terraform\
+$aws\
+$gcloud\
+$direnv\
+$line_break\
+[╰─ ](fg:muted)\
+$jobs\
+$status\
+$sudo\
+$character"""
+
+# Right prompt: Micro-pill telemetry (Duration, RAM pressure, Clock)
+right_format = """$cmd_duration$memory_usage$time"""
+
+# ==============================================================================
+# THE "BIG 6" CULT COLOR PALETTES (24-Bit TrueColor)
+# ==============================================================================
+
+[palettes.catppuccin_mocha]
+crust     = "#11111b"
+surface   = "#313244"
+muted     = "#585b70"
+subtext   = "#a6adc8"
+text      = "#cdd6f4"
+user      = "#89b4fa" # Blue
+host      = "#f9e2af" # Yellow
+dir       = "#89dceb" # Sky
+dir_root  = "#74c7ec" # Sapphire
+git       = "#cba6f7" # Mauve
+ok        = "#a6e3a1" # Green
+warn      = "#f9e2af" # Yellow
+infra     = "#fab387" # Peach
+danger    = "#f38ba8" # Red
+
+[palettes.tokyo_night]
+crust     = "#15161e"
+surface   = "#292e42"
+muted     = "#565f89"
+subtext   = "#a9b1d6"
+text      = "#c0caf5"
+user      = "#7aa2f7"
+host      = "#e0af68"
+dir       = "#7dcfff"
+dir_root  = "#2ac3de"
+git       = "#bb9af7"
+ok        = "#9ece6a"
+warn      = "#e0af68"
+infra     = "#ff9e64"
+danger    = "#f7768e"
+
+[palettes.kanagawa]
+crust     = "#16161D"
+surface   = "#2A2A37"
+muted     = "#54546D"
+subtext   = "#C8C093"
+text      = "#DCD7BA"
+user      = "#7E9CD8"
+host      = "#E6C384"
+dir       = "#7FB4CA"
+dir_root  = "#7AA89F"
+git       = "#957FB8"
+ok        = "#98BB6C"
+warn      = "#FF9E3B"
+infra     = "#FFA066"
+danger    = "#E82424"
+
+[palettes.rose_pine]
+crust     = "#191724"
+surface   = "#26233a"
+muted     = "#6e6a86"
+subtext   = "#908caa"
+text      = "#e0def4"
+user      = "#9ccfd8" # Foam
+host      = "#f6c177" # Gold
+dir       = "#31748f" # Pine
+dir_root  = "#9ccfd8" # Foam
+git       = "#c4a7e7" # Iris
+ok        = "#9ccfd8" # Foam
+warn      = "#f6c177" # Gold
+infra     = "#ebbcba" # Rose
+danger    = "#eb6f92" # Love
+
+[palettes.gruvbox_material]
+crust     = "#1d2021"
+surface   = "#32302f"
+muted     = "#7c6f64"
+subtext   = "#ddc7a1"
+text      = "#d4be98"
+user      = "#7daea3"
+host      = "#d8a657"
+dir       = "#89b482"
+dir_root  = "#a9b665"
+git       = "#d3869b"
+ok        = "#a9b665"
+warn      = "#d8a657"
+infra     = "#e78a4e"
+danger    = "#ea6962"
+
+[palettes.nord]
+crust     = "#2e3440"
+surface   = "#3b4252"
+muted     = "#4c566a"
+subtext   = "#d8dee9"
+text      = "#eceff4"
+user      = "#81a1c1"
+host      = "#ebcb8b"
+dir       = "#88c0d0"
+dir_root  = "#8fbcbb"
+git       = "#b48ead"
+ok        = "#a3be8c"
+warn      = "#ebcb8b"
+infra     = "#d08770"
+danger    = "#bf616a"
+
+# ==============================================================================
+# PROMPT CURSOR
+# ==============================================================================
+
+[character]
+success_symbol = "[❯](bold fg:ok)"
+error_symbol = "[❯](bold fg:danger)"
+vimcmd_symbol = "[❮](bold fg:dir)"
+vimcmd_replace_one_symbol = "[❮](bold fg:git)"
+vimcmd_replace_symbol = "[❮](bold fg:git)"
+vimcmd_visual_symbol = "[❮](bold fg:warn)"
+
+# ==============================================================================
+# IDENTITY MICRO-BADGE (OS + USER + HOST + SSH IP)
+# ==============================================================================
+
+[os]
+disabled = false
+style = "fg:text bg:surface"
+format = "[$symbol ]($style)"
+
+[os.symbols]
+Macos = "󰀵"
+Linux = "󰌽"
+Ubuntu = "󰕈"
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+CentOS = ""
+RockyLinux = ""
+AlmaLinux = ""
+Amazon = ""
+Alpine = ""
+Arch = "󰣇"
+Fedora = "󰣛"
+SUSE = ""
+Windows = "󰍲"
+FreeBSD = ""
+
+[username]
+show_always = true
+style_user = "bold fg:user bg:surface"
+style_root = "bold fg:crust bg:danger"
+format = "[$user]($style)"
+
+[hostname]
+ssh_only = false
+ssh_symbol = " 󰣀"
+trim_at = "."
+style = "bold fg:host bg:surface"
+format = "[$hostname$ssh_symbol]($style)"
+
+[localip]
+ssh_only = true
+style = "fg:subtext bg:surface"
+format = "[ · $localipv4]($style)"
+disabled = false
+
+# ==============================================================================
+# SESSION SAFETY & MULTIPLEXER BADGES (PROD, TMUX, SSH-AGENT, SHLVL, SUDO)
+# ==============================================================================
+
+[custom.prod_alert]
+when = '''case "$HOSTNAME" in *prod*|*prd*|*live*) exit 0;; *) exit 1;; esac'''
+symbol = "🚨 PROD"
+style = "bold fg:crust bg:danger"
+format = "[](fg:danger)[$symbol]($style)[](fg:danger) "
+
+[env_var.TMUX_PANE]
+symbol = " tmux"
+style = "bold fg:ok bg:surface"
+format = "[](fg:surface)[$symbol]($style)[](fg:surface) "
+
+[env_var.SSH_AUTH_SOCK]
+variable = "SSH_TTY"
+symbol = "󰌆"
+style = "bold fg:warn"
+format = "[$symbol ]($style)"
+disabled = true
+
+[shlvl]
+disabled = false
+threshold = 2
+symbol = "↕"
+style = "bold fg:git"
+format = "[$symbol$shlvl]($style) "
+
+[sudo]
+disabled = false
+symbol = "󰌆 "
+style = "bold fg:danger"
+format = "[$symbol]($style)"
+
+[container]
+symbol = "⬢"
+style = "bold fg:crust bg:git"
+format = "[](fg:git)[$symbol $name]($style)[](fg:git) "
+
+[nix_shell]
+symbol = "❄️ "
+style = "bold fg:dir"
+format = '[$symbol$state(\($name\))]($style) '
+
+[direnv]
+disabled = false
+symbol = "📂 "
+style = "fg:warn"
+format = "[$symbol$loaded/$allowed]($style) "
+
+# ==============================================================================
+# DIRECTORY (REPO-ROOT AWARE)
+# ==============================================================================
+
+[directory]
+truncation_length = 4
+truncation_symbol = "…/"
+truncate_to_repo = true
+style = "bold fg:dir"
+repo_root_style = "bold underline fg:dir_root"
+before_repo_root_style = "fg:muted"
+read_only = " 󰌾"
+read_only_style = "fg:danger"
+format = "[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
+
+# ==============================================================================
+# GIT TELEMETRY (BRANCH, DETACHED TAGS, REBASE PILL, COUNTS, DIFF GAUGE)
+# ==============================================================================
+
+[git_branch]
+symbol = " "
+style = "bold fg:git"
+format = "[$symbol$branch(:$remote_branch)]($style) "
+
+[git_commit]
+commit_hash_length = 7
+only_detached = true
+tag_disabled = false
+tag_symbol = " 🏷 "
+style = "bold fg:ok"
+format = '[\($hash$tag\)]($style) '
+
+[git_state]
+style = "bold fg:crust bg:warn"
+format = '[](fg:warn)[$state( $progress_current/$progress_total)]($style)[](fg:warn) '
+
+[git_status]
+style = "bold fg:warn"
+conflicted = "⚡${count} "
+ahead = "⇡${count} "
+behind = "⇣${count} "
+diverged = "⇕⇡${ahead_count}⇣${behind_count} "
+untracked = "?${count} "
+stashed = "📦${count} "
+modified = "!${count} "
+staged = "+${count} "
+renamed = "»${count} "
+deleted = "✘${count} "
+format = '([\[$all_status$ahead_behind\]]($style) )'
+
+[git_metrics]
+disabled = false
+added_style = "bold fg:ok"
+deleted_style = "bold fg:danger"
+only_nonzero_diffs = true
+format = '([+$added]($added_style)/[-$deleted]($deleted_style) )'
+
+# ==============================================================================
+# POLYGLOT RUNTIMES
+# ==============================================================================
+
+[python]
+symbol = " "
+style = "bold fg:warn"
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+
+[nodejs]
+symbol = " "
+style = "bold fg:ok"
+format = "[$symbol($version )]($style)"
+detect_files = ["package.json", ".node-version", ".nvmrc"]
+
+[bun]
+symbol = " "
+style = "bold fg:infra"
+format = "[$symbol($version )]($style)"
+
+[deno]
+symbol = "🦕 "
+style = "bold fg:ok"
+format = "[$symbol($version )]($style)"
+
+[rust]
+symbol = " "
+style = "bold fg:infra"
+format = "[$symbol($version )]($style)"
+
+[golang]
+symbol = " "
+style = "bold fg:dir"
+format = "[$symbol($version )]($style)"
+
+[java]
+symbol = " "
+style = "fg:infra"
+format = "[$symbol($version )]($style)"
+
+[c]
+symbol = " "
+style = "bold fg:user"
+format = "[$symbol($version(-$name) )]($style)"
+
+[zig]
+symbol = "⚡ "
+style = "bold fg:warn"
+format = "[$symbol($version )]($style)"
+
+[package]
+symbol = "󰏗 "
+style = "fg:subtext"
+display_private = true
+format = "[$symbol$version]($style) "
+
+# ==============================================================================
+# CLOUD & INFRASTRUCTURE
+# ==============================================================================
+
+[docker_context]
+symbol = " "
+style = "bold fg:user"
+only_with_files = true
+format = "[$symbol$context]($style) "
+
+[kubernetes]
+disabled = false
+symbol = "☸ "
+style = "bold fg:user"
+detect_files = ["k8s", "Dockerfile", "helmfile.yaml", "Chart.yaml", "skaffold.yaml", "kustomization.yaml"]
+detect_folders = ["k8s", "helm", "charts", "manifests"]
+format = '[$symbol$context( \($namespace\))]($style) '
+
+[terraform]
+symbol = "󱁢 "
+style = "bold fg:git"
+format = "[$symbol$workspace]($style) "
+
+[aws]
+symbol = " "
+style = "bold fg:infra"
+format = '[$symbol($profile )(\($region\) )]($style)'
+
+[gcloud]
+disabled = true
+
+# ==============================================================================
+# DIAGNOSTICS & RIGHT-PROMPT TELEMETRY PILLS
+# ==============================================================================
+
+[jobs]
+symbol = "✦"
+style = "bold fg:user"
+number_threshold = 1
+format = "[$symbol$number ]($style)"
+
+[status]
+disabled = false
+symbol = "✘ "
+not_executable_symbol = "🚫 "
+not_found_symbol = "🔍 "
+sigint_symbol = "🧱 "
+signal_symbol = "⚡ "
+style = "bold fg:crust bg:danger"
+map_symbol = true
+recognize_signal_code = true
+format = '[](fg:danger)[$symbol$common_meaning$signal_name$maybe_int]($style)[](fg:danger) '
+
+[cmd_duration]
+min_time = 500
+show_milliseconds = true
+style = "bold fg:warn bg:surface"
+format = "[](fg:surface)[⏱ $duration]($style)[](fg:surface) "
+
+[memory_usage]
+disabled = false
+threshold = 80
+symbol = "󰍛 "
+style = "bold fg:crust bg:danger"
+format = "[](fg:danger)[$symbol${ram}]($style)[](fg:danger) "
+
+[time]
+disabled = false
+time_format = "%H:%M:%S"
+style = "fg:subtext bg:surface"
+format = "[](fg:surface)[ $time]($style)[](fg:surface)"
